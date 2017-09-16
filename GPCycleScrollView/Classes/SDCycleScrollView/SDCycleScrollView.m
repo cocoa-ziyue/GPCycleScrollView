@@ -724,11 +724,11 @@ NSString * const ID = @"cycleCell";
         cell.titleLabelHeight = self.titleLabelHeight;
         cell.titleLabelTextColor = self.titleLabelTextColor;
         cell.titleLabelTextFont = self.titleLabelTextFont;
+        cell.borderSlideColor = self.borderSlideColor;
         cell.hasConfigured = YES;
         cell.imageView.contentMode = self.bannerImageViewContentMode;
         cell.clipsToBounds = YES;
         cell.onlyDisplayText = self.onlyDisplayText;
-        cell.count =  self.imageURLStringsGroup.count;
     }
     
     if (self.bannerCellType) {
@@ -870,7 +870,5 @@ NSString * const ID = @"cycleCell";
     CGFloat itemWidth = FitAllScreen(1000, 1000*0.6);
     [self.mainView setContentOffset:CGPointMake(index * itemWidth + itemWidth / 2 - SCREEN_WIDTH / 2, 0)];
 }
-
-
 
 @end

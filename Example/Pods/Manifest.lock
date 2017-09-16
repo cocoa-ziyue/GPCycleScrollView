@@ -1,5 +1,5 @@
 PODS:
-  - GPCycleScrollView (0.1.0):
+  - GPCycleScrollView (0.1.1):
     - Masonry
     - SDWebImage (~> 3.8.2)
   - Masonry (1.0.2)
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  GPCycleScrollView: 3011b19c2950b210f937f413956d6eec3724be9c
+  GPCycleScrollView: 0de005703dd947f84822142f10ef76a9aaeb0386
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 

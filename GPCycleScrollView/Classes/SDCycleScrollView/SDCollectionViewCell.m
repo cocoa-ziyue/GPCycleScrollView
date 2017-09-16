@@ -34,13 +34,10 @@
 #import "UIImageView+WebCache.h"
 
 @interface SDCollectionViewCell ()
-
+@property (nonatomic,strong) UILabel *titleLabel;
 @end
 
 @implementation SDCollectionViewCell
-{
-    __weak UILabel *_titleLabel;
-}
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -49,7 +46,6 @@
         [self setupImageView];
         [self setupTitleLabel];
     }
-    
     return self;
 }
 
@@ -71,44 +67,39 @@
     _titleLabel.font = titleLabelTextFont;
 }
 
-- (void)setupImageView
-{
+- (void)setupImageView {
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.backgroundColor = [UIColor blackColor];
-    imageView.clipsToBounds = NO;
+    imageView.backgroundColor = [UIColor whiteColor];
+    if (!self.borderSlideColor)  self.borderSlideColor = [UIColor clearColor];
+    //添加边框
+    CALayer *layer = [imageView layer];
+    layer.borderColor = self.borderSlideColor.CGColor;
+    layer.borderWidth = 4.0f;
+    imageView.clipsToBounds = YES;
     _imageView = imageView;
     [self.contentView addSubview:imageView];
 }
 
 - (void)setupTitleLabel
 {
-    UILabel *titleLabel = [[UILabel alloc] init];
-    _titleLabel = titleLabel;
-    _titleLabel.hidden = YES;
+    self.titleLabel = [[UILabel alloc] init];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.numberOfLines = 2;
-    [self.contentView addSubview:titleLabel];
+    _titleLabel.numberOfLines = 1;
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.contentView.mas_centerX);
+        make.centerY.equalTo(self.contentView.mas_centerY);
+    }];
 }
 
 - (void)setTitle:(NSString *)title
 {
     _title = [title copy];
-    _titleLabel.text = [NSString stringWithFormat:@"   %@", title];
-    [_titleLabel sizeToFit];
-    CGFloat titleLabelW = SCREEN_WIDTH-30;
-    CGSize size = LBL_SIZE(title,_titleLabel.font,titleLabelW,MAXFLOAT);
-    CGFloat titleLabelY = self.sd_height - size.height-FitAllScreen(60,35);
-    if (self.count > 1) {
-        titleLabelY = self.sd_height - size.height-FitAllScreen(80,50);
-    }
-    _titleLabel.frame = CGRectMake(15, titleLabelY, titleLabelW, size.height);
-    if (_titleLabel.hidden)  _titleLabel.hidden = NO;
-    
+    _titleLabel.text = [NSString stringWithFormat:@"%@", title];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
     if (self.onlyDisplayText) {
         _titleLabel.frame = self.bounds;
     } else {

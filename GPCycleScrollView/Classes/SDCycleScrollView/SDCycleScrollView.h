@@ -126,6 +126,7 @@ typedef enum {
 
 /** 轮播图片的ContentMode，默认为 UIViewContentModeScaleToFill */
 @property (nonatomic, assign) UIViewContentMode bannerImageViewContentMode;
+@property (nonatomic, assign) UIColor *borderSlideColor;     //边框颜色
 
 /** 占位图，用于网络未加载到图片时 */
 @property (nonatomic, strong) UIImage *placeholderImage;
