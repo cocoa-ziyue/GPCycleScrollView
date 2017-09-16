@@ -1,0 +1,31 @@
+{
+  "name": "GPCycleScrollView",
+  "version": "0.1.0",
+  "summary": "A short description of GPCycleScrollView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/ziyue92/GPCycleScrollView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ziyue92": "ziyue92@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/ziyue92/GPCycleScrollView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "GPCycleScrollView/Classes/**/*",
+  "dependencies": {
+    "SDWebImage": [
+      "~> 3.8.2"
+    ],
+    "Masonry": [
+
+    ]
+  },
+  "prefix_header_contents": "//屏幕适配\n#define FitAllScreen(value1, value2) (SCREEN_WIDTH >= 414 ? (Fit6P(value1)) : (Fit6(value2)))\n#define Fit6P(value) ((value) / 1242.0f * [UIScreen mainScreen].bounds.size.width)\n#define Fit6(value) ((value) / 750.0f * [UIScreen mainScreen].bounds.size.width)\n#define FitAllFont(value1, value2) (SCREEN_WIDTH >= 414 ? (value1) : (value2))\n#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width\n#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height\n\n#define LBL_SIZE(text, font, w, h) [text length] > 0 ? [text boundingRectWithSize:CGSizeMake(w, h) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;"
+}

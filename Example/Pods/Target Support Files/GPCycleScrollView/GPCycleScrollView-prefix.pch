@@ -1,0 +1,21 @@
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
+#endif
+
+//屏幕适配
+#define FitAllScreen(value1, value2) (SCREEN_WIDTH >= 414 ? (Fit6P(value1)) : (Fit6(value2)))
+#define Fit6P(value) ((value) / 1242.0f * [UIScreen mainScreen].bounds.size.width)
+#define Fit6(value) ((value) / 750.0f * [UIScreen mainScreen].bounds.size.width)
+#define FitAllFont(value1, value2) (SCREEN_WIDTH >= 414 ? (value1) : (value2))
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define LBL_SIZE(text, font, w, h) [text length] > 0 ? [text boundingRectWithSize:CGSizeMake(w, h) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
